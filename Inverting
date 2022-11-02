@@ -1,0 +1,17 @@
+import cv2
+import numpy as np
+
+image = cv2.imread('sapka.jpg')
+cv2.imshow('Orjinal hali', image)
+
+image2 = cv2.imread('sapka.jpg', 0)
+cv2.imshow('resim-0' ,image2)
+
+[h ,w] = image2.shape
+resim = np.zeros([h ,w] ,dtype=np.uint8)
+for i in range(h):
+    for j in range(w):
+        image[i ,j] = 255 - image2[i ,j]
+
+cv2.imshow("Ters hali", image)
+cv2.waitKey()
