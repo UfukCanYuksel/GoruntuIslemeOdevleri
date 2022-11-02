@@ -1,0 +1,22 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+img = cv2.imread("sapka.jpg")
+sha = img.shape
+cv2.imshow('Orjinal hali', img)
+
+img_gri = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+cv2.imshow('Gri hali', img_gri)
+
+histogram = np.zeros(shape=(256, 1))
+
+for i in range(sha[0]):
+    for j in range(sha[1]):
+        k = img_gri[i, j]
+        histogram[k, 0] = histogram[k, 0] + 1
+
+
+plt.plot(histogram)
+plt.show()
+cv2.waitKey(0)
